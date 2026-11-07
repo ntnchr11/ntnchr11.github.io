@@ -28,7 +28,7 @@ const note = (await getCollection('laboratorio')).sort((a, b) => +b.data.data - 
 
   <h2>Dove voglio arrivare</h2>
   <p class="prose">Sono una Senior Scrum Master e conosco a fondo Lean e Agile. Ho un background scientifico (laurea in Fisica) e lavoro tra product management, analisi dei dati e facilitazione di team e leadership. Ragiono per ipotesi da verificare e obiettivi misurabili.</p>
-  <p class="prose">Negli ultimi anni ho imparato a far funzionare bene i team: togliere gli ostacoli, allineare le persone, rendere visibile il valore. Ora voglio aumentare il mio impatto e avvicinarmi a dove il valore nasce, cioè alle scelte su cosa costruire e perché. Mi interessa partire da un'ipotesi, metterla alla prova con i dati e trasformarla in un prodotto che le persone usano davvero. È la direzione in cui mi muovo anche nei miei progetti personali.</p>
+  <p class="prose">Negli ultimi anni ho imparato a far funzionare bene i team: rimuovere gli ostacoli, allineare le persone, rendere visibile il valore. Ora voglio aumentare il mio impatto e avvicinarmi a dove il valore nasce, cioè alle scelte su cosa costruire e perché. Mi interessa partire da un'ipotesi, metterla alla prova con i dati e trasformarla in un prodotto che le persone usano davvero. È la direzione in cui mi muovo anche nei miei progetti personali.</p>
 
   <h2>Progetti in evidenza</h2>
   <div class="grid">
@@ -50,7 +50,7 @@ const note = (await getCollection('laboratorio')).sort((a, b) => +b.data.data - 
     </a>
   </div>
 
-  <h2>Dal laboratorio</h2>
+  <h2>Altre sperimentazioni</h2>
   <div class="grid">
     {note.map((n) => (
       <a class="card" href={`${base}/laboratorio/${n.id}`} style="text-decoration:none;color:inherit">
