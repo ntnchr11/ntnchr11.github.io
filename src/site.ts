@@ -4,7 +4,7 @@ export const site = {
   ruolo: 'Senior Scrum Master · Organizational Facilitator',
   tagline: 'Senior Scrum Master, con una conoscenza approfondita di Lean e Agile e un approccio orientato al prodotto. Aiuto team e leadership ad allinearsi su valore e obiettivi misurabili.',
   // Endpoint del form contatti (Formspree). Vedi README: sezione 'Form contatti'.
-  formEndpoint: 'https://formspree.io/f/INCOLLA-QUI-IL-TUO-ID',
+  formEndpoint: 'https://formspree.io/f/xeaawlno',
   github: 'https://github.com/ntnchr11',
   linkedin: 'https://www.linkedin.com/in/chiaraantonucci',
 };
