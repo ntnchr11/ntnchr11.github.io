@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+const gruppi = [
+  { nome: 'Competenze principali', voci: ['Agile', 'Lean', 'Scrum (senior)', 'Facilitazione', 'Product management', 'Analisi dei requisiti', 'Analisi dei dati', 'Roadmapping', 'Pensiero critico', 'Leadership coaching'] },
+  { nome: 'Analisi dati e programmazione', voci: ['Python', 'R', 'SQL', 'SAS', 'Stata', 'C', 'Fortran', 'HTML5', 'CSS3', 'PHP5'] },
+  { nome: 'Strumenti di lavoro', voci: ['Jira', 'Miro', 'Mural', 'Trello', 'Asana', 'SQL Server Management Studio', 'Microsoft Office', 'Photoshop', 'AutoCAD'] },
+  { nome: 'AI generativa', voci: ['Microsoft Copilot', 'ChatGPT', 'Claude', 'Agent personalizzati'] },
+  { nome: 'Sistemi operativi', voci: ['Windows', 'macOS', 'Linux'] },
+  { nome: 'Lingue', voci: ['Italiano (madrelingua)', 'Inglese (B2)', 'Francese (A2)'] },
+];
+---
+<Base titolo="Competenze">
+  <p class="eyebrow">Competenze</p>
+  <h1>Cosa so fare</h1>
+  <p class="lead">Un mix di metodo scientifico, strumenti digitali e facilitazione di persone e team.</p>
+  <div class="grid" style="margin-top:2rem">
+    {gruppi.map((g) => (
+      <section class="card">
+        <h3>{g.nome}</h3>
+        <ul class="tags">{g.voci.map((v) => <li>{v}</li>)}</ul>
+      </section>
+    ))}
+  </div>
+</Base>

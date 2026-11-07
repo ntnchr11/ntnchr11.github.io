@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const note = (await getCollection('laboratorio')).sort((a, b) => +b.data.data - +a.data.data);
+---
+<Base titolo="Laboratorio">
+  <p class="eyebrow">Laboratorio</p>
+  <h1>Idee, esperimenti, cose che imparo</h1>
+  <p class="lead">Note brevi, esperimenti e riflessioni mentre imparo.</p>
+  <div class="grid" style="margin-top:2rem">
+    {note.map((n) => (
+      <a class="card" href={`${base}/laboratorio/${n.id}`} style="text-decoration:none;color:inherit">
+        <span class="eyebrow">{n.data.data.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+        <h3>{n.data.titolo}</h3>
+        <p>{n.data.descrizione}</p>
+        <ul class="tags">{n.data.tag.map((t) => <li>{t}</li>)}</ul>
+      </a>
+    ))}
+  </div>
+</Base>

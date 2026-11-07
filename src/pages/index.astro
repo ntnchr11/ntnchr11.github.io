@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { site } from '../site';
+import { Image } from 'astro:assets';
+// Per mostrare la foto: salva un file src/assets/foto.jpg (o .png / .webp)
+const foto = Object.values(import.meta.glob('../assets/foto.{jpg,jpeg,png,webp}', { eager: true, import: 'default' }))[0] as ImageMetadata | undefined;
+const iniziali = site.nome.split(' ').map((p) => p[0]).join('');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const progetti = (await getCollection('progetti')).sort((a, b) => a.data.ordine - b.data.ordine).slice(0, 3);
+const note = (await getCollection('laboratorio')).sort((a, b) => +b.data.data - +a.data.data).slice(0, 3);
+---
+<Base>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">{site.ruolo}</p>
+      <h1>Ciao,<br /><span class="nome">sono {site.nome}.</span></h1>
+      <p class="lead">{site.tagline}</p>
+      <p style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem">
+        <a class="btn" href={`${base}/progetti`}>Guarda i progetti</a>
+        <a class="btn sec" href={`${base}/contatti`}>Mettiamoci in contatto</a>
+      </p>
+    </div>
+    <div class="portrait">
+      {foto ? <Image src={foto} alt={`Foto di ${site.nome}`} width={400} height={400} loading="eager" /> : <div class="iniziali" aria-hidden="true">{iniziali}</div>}
+    </div>
+  </section>
+
+  <h2>Dove voglio arrivare</h2>
+  <p class="prose">Sono una Senior Scrum Master e conosco a fondo Lean e Agile. Ho un background scientifico (laurea in Fisica) e lavoro tra product management, analisi dei dati e facilitazione di team e leadership. Ragiono per ipotesi da verificare e obiettivi misurabili.</p>
+  <p class="prose">Negli ultimi anni ho imparato a far funzionare bene i team: togliere gli ostacoli, allineare le persone, rendere visibile il valore. Ora voglio aumentare il mio impatto e avvicinarmi a dove il valore nasce, cioè alle scelte su cosa costruire e perché. Mi interessa partire da un'ipotesi, metterla alla prova con i dati e trasformarla in un prodotto che le persone usano davvero. È la direzione in cui mi muovo anche nei miei progetti personali.</p>
+
+  <h2>Progetti in evidenza</h2>
+  <div class="grid">
+    {progetti.map((p) => (
+      <a class="card" href={`${base}/progetti/${p.id}`} style="text-decoration:none;color:inherit">
+        <span class="eyebrow">{p.data.stato}</span>
+        <h3>{p.data.titolo}</h3>
+        <p>{p.data.descrizione}</p>
+      </a>
+    ))}
+  </div>
+
+  <h2>Fuori dal lavoro</h2>
+  <div class="grid">
+    <a class="card" href={`${base}/passioni`} style="text-decoration:none;color:inherit">
+      <span class="eyebrow">Passioni</span>
+      <h3>Vino naturale e Agile</h3>
+      <p>Cosa c'entra un bicchiere di vino naturale con Lean e Agile? Più di quanto sembri.</p>
+    </a>
+  </div>
+
+  <h2>Dal laboratorio</h2>
+  <div class="grid">
+    {note.map((n) => (
+      <a class="card" href={`${base}/laboratorio/${n.id}`} style="text-decoration:none;color:inherit">
+        <span class="eyebrow">{n.data.data.toLocaleDateString('it-IT', { month: 'long', year: 'numeric' })}</span>
+        <h3>{n.data.titolo}</h3>
+        <p>{n.data.descrizione}</p>
+      </a>
+    ))}
+  </div>
+</Base>
