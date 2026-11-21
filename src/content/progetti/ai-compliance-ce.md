@@ -1,43 +1,41 @@
 ---
 titolo: AI per la compliance CE dei costruttori di macchine
-descrizione: Discovery e prototipo di un assistente che confronta il fascicolo tecnico con il nuovo Regolamento macchine e prepara bozze da validare. L'AI è lo strumento, non il protagonista.
+descrizione: Un assistente che confronta il fascicolo tecnico di un costruttore di macchine con il nuovo Regolamento macchine e prepara bozze che un professionista può validare. Prima capire se serve davvero, poi costruirlo.
 stato: in corso
 tecnologie: [Product discovery, Interviste, Prototipo con Claude, Unit economics]
 ordine: 2
 ---
-Un esperimento di prodotto, impostato come un percorso di discovery: prima le ipotesi, poi le interviste, poi un prototipo, infine una decisione esplicita di andare avanti o fermarsi.
+Voglio capire se un assistente basato su AI può aiutare gli studi tecnici ad affrontare il passaggio al nuovo Regolamento macchine, e a quali condizioni avrebbe senso farne un servizio. È un progetto personale in cui applico il metodo della product discovery a un problema che conosco da vicino.
 
 ## Il problema
 
-Il Regolamento macchine (UE) 2023/1230 si applica dal **20 gennaio 2027** e sostituisce la direttiva 2006/42/CE. Per chi produce macchine significa rivedere i fascicoli tecnici entro una scadenza vicina. Ho lavorato per anni sulla documentazione tecnica per la marcatura CE di macchinari, quindi conosco il lavoro da vicino.
+Il Regolamento macchine (UE) 2023/1230 si applica dal **20 gennaio 2027** e sostituisce la direttiva 2006/42/CE. Per chi produce macchine significa rivedere i fascicoli tecnici entro una scadenza vicina. Ho lavorato per anni sulla documentazione tecnica per la marcatura CE di macchinari, quindi so quanto lavoro richiede.
 
-## L'idea di prodotto
+## Cosa voglio costruire
 
-Un assistente che legge il fascicolo tecnico esistente di un piccolo costruttore, segnala cosa manca rispetto al nuovo regolamento e prepara bozze da far validare a un professionista. Il servizio verrebbe erogato da **studi tecnici**: lo strumento aumenta la loro capacità, la bozza resta validata e firmata da una persona, come oggi.
+Un assistente che legge il fascicolo tecnico esistente di un piccolo costruttore, segnala cosa manca rispetto al nuovo regolamento e prepara le bozze delle parti da aggiornare. A offrire il servizio sarebbero gli **studi tecnici**: lo strumento li aiuta a seguire più fascicoli nello stesso tempo, mentre la bozza resta validata e firmata da un professionista, come oggi.
 
-## Le ipotesi (scritte prima di parlare con chiunque)
+## Cosa voglio verificare
 
-1. La scadenza crea un picco di richieste che gli studi non riescono a evadere con la capacità attuale.
-2. Buona parte delle ore va in lavoro ripetitivo (confronto tra direttiva e regolamento, riscrittura di sezioni) e non in giudizio tecnico.
-3. I tecnici si fidano di una bozza generata dall'AI solo se ogni voce rimanda al requisito da cui nasce.
-4. I costruttori sono disposti a pagare lo stesso prezzo per un servizio più rapido, oppure chiedono uno sconto.
+Prima di costruire qualcosa voglio sapere se il problema è reale e se la soluzione regge. Parto da quattro domande:
 
-Sono formulate in modo che possano cadere: se la seconda non regge, il prototipo cambia del tutto.
+- La scadenza porterà più richieste di quante gli studi riescano a gestire?
+- Quanta parte del lavoro è ripetitiva (confronto tra direttiva e regolamento, riscrittura di sezioni) e quanta richiede davvero giudizio tecnico?
+- Un tecnico si fida di una bozza generata dall'AI? Credo di sì solo se ogni voce rimanda al requisito da cui nasce.
+- I costruttori pagherebbero lo stesso prezzo per un servizio più rapido, o chiederebbero uno sconto?
 
-## Come lo sto affrontando
+Se le risposte non confermano quello che mi aspetto, cambio il prototipo oppure mi fermo.
 
-- **Settimana 1:** interviste a studi tecnici e costruttori, con domande aperte che non guidano le risposte.
-- **Settimana 2:** prototipo con Claude su un fascicolo di esempio.
-- **Settimana 3:** test con 2-3 professionisti e case study breve.
+## Come procedo
 
-Le metriche sono concrete: tempo per fascicolo, percentuale di voci che il tecnico corregge, costo stimato per fascicolo.
+Comincio parlando con studi tecnici e costruttori. Poi preparo un prototipo con Claude su un fascicolo di esempio e lo faccio provare a due o tre professionisti. Misuro il tempo necessario per fascicolo, la percentuale di voci che il tecnico corregge e il costo stimato per fascicolo. Alla fine scrivo un breve case study con la decisione: andare avanti o fermarmi.
 
-## Le domande di prodotto che mi interessano
+## Cosa mi interessa capire
 
-- Quanto errore è tollerabile quando un errore costa?
-- Quando l'AI non deve rispondere?
-- Chi paga, e quanto?
+- Quanto errore si può accettare quando un errore ha un costo?
+- In quali casi l'AI non deve rispondere?
+- Chi paga questo servizio, e quanto?
 
 ## Riservatezza
 
-È un progetto personale. Lavora solo su un fascicolo di esempio anonimo, senza usare documenti di clienti.
+È un progetto personale: lavora solo su un fascicolo di esempio anonimo, senza usare documenti di clienti.
