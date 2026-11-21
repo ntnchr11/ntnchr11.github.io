@@ -2,52 +2,63 @@
 import Base from '../layouts/Base.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-// Modifica qui prezzi e testi delle formule.
+// Modifica qui prezzi e durata.
 const prezzi = {
   oraSingola: 60,
-  percorso: 270, // 5 incontri da 60 minuti
+  percorso: 165, // 3 incontri da 60 minuti
   primaCallMinuti: 30,
 };
-const risparmio = prezzi.oraSingola * 5 - prezzi.percorso;
+const nIncontri = 3;
+const risparmio = prezzi.oraSingola * nIncontri - prezzi.percorso;
 const contatto = (testo: string) => `${base}/contatti?messaggio=${encodeURIComponent(testo)}`;
 
+const domande = [
+  'Cosa fa davvero uno Scrum Master, nella pratica di tutti i giorni?',
+  'Quali competenze bisogna sviluppare?',
+  'Quali certificazioni scegliere?',
+  'Come si applica Scrum nella realtà di un\'azienda?',
+  'Come si passa dalla teoria alla pratica?',
+];
+
 const aree = [
-  { titolo: 'Il ruolo', testo: 'Responsabilità, attività quotidiane e collaborazione con team, Product Owner e stakeholder.' },
-  { titolo: 'Le competenze', testo: 'Facilitazione, comunicazione, servant leadership, gestione dei conflitti e coaching.' },
-  { titolo: 'La formazione', testo: 'Cosa studiare, quali risorse usare e come orientarsi tra certificazioni e percorsi formativi.' },
-  { titolo: 'L\'esperienza pratica', testo: 'Come avvicinarti al ruolo e applicare i principi Agile anche nel tuo lavoro di oggi.' },
-  { titolo: 'Il tuo percorso', testo: 'Un piano di sviluppo personalizzato, con obiettivi e passi concreti.' },
+  'Capire il ruolo e le sue responsabilità',
+  'Individuare le soft skill da sviluppare',
+  'Definire cosa studiare e quali certificazioni valutare',
+  'Capire come fare esperienza nel tuo contesto di lavoro',
+  'Costruire una roadmap personale per entrare nel mondo Agile',
 ];
 
 const incontri = [
-  { titolo: 'Conoscere il ruolo', punti: ['Chi è lo Scrum Master e cosa fa davvero ogni giorno', 'Differenze con Project Manager e Product Owner', 'Responsabilità e aspettative delle aziende'] },
-  { titolo: 'Le competenze da sviluppare', punti: ['Servant leadership e comunicazione efficace', 'Facilitazione', 'Gestione dei conflitti, ascolto attivo e coaching'] },
-  { titolo: 'Cosa studiare', punti: ['Scrum Guide, Agile Manifesto e framework Scrum', 'Certificazioni: come scegliere', 'Libri, risorse e materiali di studio'] },
-  { titolo: 'Scrum in azienda', punti: ['Come funziona un team Scrum e come si gestiscono gli eventi', 'Come muoversi nelle prime settimane e individuare gli impedimenti', 'Come fare esperienza anche senza avere ancora il ruolo'] },
-  { titolo: 'Il tuo piano di crescita', punti: ['Come valorizzare le esperienze che hai già', 'CV, LinkedIn e colloqui', 'Un piano di sviluppo a 3-6 mesi'] },
+  { titolo: 'Il ruolo e le competenze', punti: ['Chi è lo Scrum Master e cosa fa davvero ogni giorno', 'Differenze con Project Manager e Product Owner', 'Le competenze da sviluppare: facilitazione, comunicazione, servant leadership, gestione dei conflitti, coaching'] },
+  { titolo: 'Studiare e fare esperienza', punti: ['Cosa studiare: Scrum Guide, Agile Manifesto, risorse e libri', 'Certificazioni: come orientarsi e scegliere', 'Come avvicinarti al ruolo e applicare Scrum nel tuo contesto, anche senza il titolo'] },
+  { titolo: 'La tua roadmap', punti: ['Come valorizzare le esperienze che hai già', 'CV, LinkedIn e preparazione ai colloqui', 'Un piano di sviluppo a 3-6 mesi, con obiettivi e passi concreti'] },
 ];
 ---
-<Base titolo="Mentoring per aspiranti Scrum Master" descrizione="Percorso individuale di mentoring per chi vuole diventare Scrum Master: ruolo, competenze, formazione e piano di crescita. Prima consulenza gratuita.">
+<Base titolo="Mentoring per aspiranti Scrum Master" descrizione="Percorso individuale di mentoring per chi vuole diventare Scrum Master: ruolo, competenze, certificazioni e roadmap personale. Prima consulenza gratuita.">
   <p class="eyebrow">Mentoring</p>
-  <h1>Vuoi diventare Scrum Master e non sai da dove iniziare?</h1>
-  <p class="lead">Un percorso individuale per capire davvero il ruolo, valorizzare le competenze che hai già e costruire il tuo piano di crescita. Dalla curiosità alla professione.</p>
+  <h1>Vuoi diventare Scrum Master ma non sai da dove iniziare?</h1>
+  <p class="lead">Forse lavori già nel mondo IT, come Developer, Tester, Business Analyst o Project Manager, e stai pensando a un percorso in ambito Agile. Ti aiuto a capire come arrivarci.</p>
   <p style="margin-top:1.5rem">
     <a class="btn" href={contatto('Ciao Chiara, vorrei prenotare la prima consulenza gratuita di mentoring per aspiranti Scrum Master. Il mio punto di partenza è: ')}>Prenota la prima consulenza gratuita</a>
   </p>
 
+  <h2>Ti riconosci in queste domande?</h2>
+  <ul class="prose">
+    {domande.map((d) => <li>{d}</li>)}
+  </ul>
+
   <div class="prose">
-    <p>Ti accompagno partendo dalla mia esperienza pratica come Scrum Master e dal confronto su situazioni reali. Il percorso è pensato per professionisti IT che vogliono evolvere verso il ruolo e per chi si avvicina per la prima volta al mondo Agile.</p>
-    <p><strong>Non è un corso di preparazione a una certificazione ufficiale.</strong> È un percorso di orientamento e crescita, costruito intorno ai tuoi obiettivi.</p>
+    <p>Ho pensato un percorso individuale di mentoring, costruito sull'esperienza pratica e non su un corso teorico. Insieme possiamo:</p>
+    <ul>{aree.map((a) => <li>{a}</li>)}</ul>
+    <p><strong>Non è una preparazione a una certificazione ufficiale.</strong> È un percorso di orientamento e di crescita professionale: il primo passo per diventare Scrum Master è capire come arrivarci.</p>
   </div>
 
-  <h2>Su cosa lavoriamo</h2>
-  <div class="grid">
-    {aree.map((a) => (
-      <section class="card"><h3>{a.titolo}</h3><p>{a.testo}</p></section>
-    ))}
+  <h2>Chi ti accompagna</h2>
+  <div class="prose">
+    <p>Sono una Senior Scrum Master, certificata CSM, PSM I e ICP-ATF (facilitazione di team agili), e lavoro oggi come facilitatrice di team e leadership in un contesto internazionale. Il mio percorso non è lineare: vengo dalla Fisica e dalla ricerca, ho lavorato su progetti IT e di prodotto e poi sono arrivata ad Agile. So quanto può sembrare confuso il passaggio, e quanto un confronto con chi ci è già passata aiuti a orientarsi.</p>
   </div>
 
-  <h2>Il percorso in 5 incontri</h2>
+  <h2>Il percorso in {nIncontri} incontri</h2>
   <div class="timeline">
     {incontri.map((i, n) => (
       <article>
@@ -74,16 +85,16 @@ const incontri = [
     </section>
     <section class="card">
       <span class="eyebrow">Percorso completo</span>
-      <h3>{prezzi.percorso} € <small style="font-weight:400;font-size:.9rem">/ 5 incontri da 60 minuti</small></h3>
-      <p>Tutto il percorso, con un piano personalizzato finale. Risparmi {risparmio} € rispetto a cinque incontri singoli.</p>
-      <a class="btn" href={contatto('Ciao Chiara, vorrei informazioni sul percorso di mentoring in 5 incontri. ')}>Richiedi</a>
+      <h3>{prezzi.percorso} € <small style="font-weight:400;font-size:.9rem">/ {nIncontri} incontri da 60 minuti</small></h3>
+      <p>Tutto il percorso, fino alla tua roadmap personale. Risparmi {risparmio} € rispetto a {nIncontri} incontri singoli.</p>
+      <a class="btn" href={contatto(`Ciao Chiara, vorrei informazioni sul percorso di mentoring in ${nIncontri} incontri. `)}>Richiedi</a>
     </section>
   </div>
 
   <h2>Domande frequenti</h2>
   <div class="prose">
     <h3>Serve già esperienza di Agile?</h3>
-    <p>No. Il percorso funziona sia per chi parte da zero sia per chi lavora già in un contesto IT e vuole cambiare ruolo.</p>
+    <p>No. Il percorso funziona sia per chi lavora già in un contesto IT e vuole cambiare ruolo, sia per chi si avvicina per la prima volta al mondo Agile.</p>
     <h3>Come si svolgono gli incontri?</h3>
     <p>In videochiamata, uno a uno. Prima di ogni incontro ci accordiamo sul tema, e alla fine ricevi i passi concreti da fare.</p>
     <h3>Mi garantisci un posto di lavoro o la certificazione?</h3>
@@ -91,6 +102,6 @@ const incontri = [
   </div>
 
   <p style="margin-top:2rem">
-    <a class="btn" href={contatto('Ciao Chiara, vorrei prenotare la prima consulenza gratuita di mentoring per aspiranti Scrum Master. Il mio punto di partenza è: ')}>Inizia dalla consulenza gratuita</a>
+    <a class="btn" href={contatto('Ciao Chiara, vorrei prenotare la prima consulenza gratuita di mentoring per aspiranti Scrum Master. Il mio punto di partenza è: ')}>Scrivimi per iniziare</a>
   </p>
 </Base>
