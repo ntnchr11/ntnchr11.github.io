@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Modifica qui prezzi e testi delle formule.
+const prezzi = {
+  oraSingola: 60,
+  percorso: 270, // 5 incontri da 60 minuti
+  primaCallMinuti: 30,
+};
+const risparmio = prezzi.oraSingola * 5 - prezzi.percorso;
+const contatto = (testo: string) => `${base}/contatti?messaggio=${encodeURIComponent(testo)}`;
+
+const aree = [
+  { titolo: 'Il ruolo', testo: 'Responsabilità, attività quotidiane e collaborazione con team, Product Owner e stakeholder.' },
+  { titolo: 'Le competenze', testo: 'Facilitazione, comunicazione, servant leadership, gestione dei conflitti e coaching.' },
+  { titolo: 'La formazione', testo: 'Cosa studiare, quali risorse usare e come orientarsi tra certificazioni e percorsi formativi.' },
+  { titolo: 'L\'esperienza pratica', testo: 'Come avvicinarti al ruolo e applicare i principi Agile anche nel tuo lavoro di oggi.' },
+  { titolo: 'Il tuo percorso', testo: 'Un piano di sviluppo personalizzato, con obiettivi e passi concreti.' },
+];
+
+const incontri = [
+  { titolo: 'Conoscere il ruolo', punti: ['Chi è lo Scrum Master e cosa fa davvero ogni giorno', 'Differenze con Project Manager e Product Owner', 'Responsabilità e aspettative delle aziende'] },
+  { titolo: 'Le competenze da sviluppare', punti: ['Servant leadership e comunicazione efficace', 'Facilitazione', 'Gestione dei conflitti, ascolto attivo e coaching'] },
+  { titolo: 'Cosa studiare', punti: ['Scrum Guide, Agile Manifesto e framework Scrum', 'Certificazioni: come scegliere', 'Libri, risorse e materiali di studio'] },
+  { titolo: 'Scrum in azienda', punti: ['Come funziona un team Scrum e come si gestiscono gli eventi', 'Come muoversi nelle prime settimane e individuare gli impedimenti', 'Come fare esperienza anche senza avere ancora il ruolo'] },
+  { titolo: 'Il tuo piano di crescita', punti: ['Come valorizzare le esperienze che hai già', 'CV, LinkedIn e colloqui', 'Un piano di sviluppo a 3-6 mesi'] },
+];
+---
+<Base titolo="Mentoring per aspiranti Scrum Master" descrizione="Percorso individuale di mentoring per chi vuole diventare Scrum Master: ruolo, competenze, formazione e piano di crescita. Prima consulenza gratuita.">
+  <p class="eyebrow">Mentoring</p>
+  <h1>Vuoi diventare Scrum Master e non sai da dove iniziare?</h1>
+  <p class="lead">Un percorso individuale per capire davvero il ruolo, valorizzare le competenze che hai già e costruire il tuo piano di crescita. Dalla curiosità alla professione.</p>
+  <p style="margin-top:1.5rem">
+    <a class="btn" href={contatto('Ciao Chiara, vorrei prenotare la prima consulenza gratuita di mentoring per aspiranti Scrum Master. Il mio punto di partenza è: ')}>Prenota la prima consulenza gratuita</a>
+  </p>
+
+  <div class="prose">
+    <p>Ti accompagno partendo dalla mia esperienza pratica come Scrum Master e dal confronto su situazioni reali. Il percorso è pensato per professionisti IT che vogliono evolvere verso il ruolo e per chi si avvicina per la prima volta al mondo Agile.</p>
+    <p><strong>Non è un corso di preparazione a una certificazione ufficiale.</strong> È un percorso di orientamento e crescita, costruito intorno ai tuoi obiettivi.</p>
+  </div>
+
+  <h2>Su cosa lavoriamo</h2>
+  <div class="grid">
+    {aree.map((a) => (
+      <section class="card"><h3>{a.titolo}</h3><p>{a.testo}</p></section>
+    ))}
+  </div>
+
+  <h2>Il percorso in 5 incontri</h2>
+  <div class="timeline">
+    {incontri.map((i, n) => (
+      <article>
+        <span class="when">Incontro {n + 1}</span>
+        <h3>{i.titolo}</h3>
+        <ul>{i.punti.map((p) => <li>{p}</li>)}</ul>
+      </article>
+    ))}
+  </div>
+
+  <h2>Formule e prezzi</h2>
+  <div class="grid">
+    <section class="card">
+      <span class="eyebrow">Per iniziare</span>
+      <h3>Prima consulenza gratuita</h3>
+      <p>{prezzi.primaCallMinuti} minuti per conoscerci, capire il tuo punto di partenza e vedere se il percorso fa per te. Senza impegno.</p>
+      <a class="btn sec" href={contatto('Ciao Chiara, vorrei prenotare la prima consulenza gratuita. ')}>Prenota</a>
+    </section>
+    <section class="card">
+      <span class="eyebrow">Singolo incontro</span>
+      <h3>{prezzi.oraSingola} € <small style="font-weight:400;font-size:.9rem">/ 60 minuti</small></h3>
+      <p>Un confronto mirato su un tema preciso: il ruolo, il CV, un colloquio, una situazione che stai vivendo.</p>
+      <a class="btn sec" href={contatto('Ciao Chiara, vorrei prenotare un singolo incontro di mentoring (60 minuti). ')}>Richiedi</a>
+    </section>
+    <section class="card">
+      <span class="eyebrow">Percorso completo</span>
+      <h3>{prezzi.percorso} € <small style="font-weight:400;font-size:.9rem">/ 5 incontri da 60 minuti</small></h3>
+      <p>Tutto il percorso, con un piano personalizzato finale. Risparmi {risparmio} € rispetto a cinque incontri singoli.</p>
+      <a class="btn" href={contatto('Ciao Chiara, vorrei informazioni sul percorso di mentoring in 5 incontri. ')}>Richiedi</a>
+    </section>
+  </div>
+
+  <h2>Domande frequenti</h2>
+  <div class="prose">
+    <h3>Serve già esperienza di Agile?</h3>
+    <p>No. Il percorso funziona sia per chi parte da zero sia per chi lavora già in un contesto IT e vuole cambiare ruolo.</p>
+    <h3>Come si svolgono gli incontri?</h3>
+    <p>In videochiamata, uno a uno. Prima di ogni incontro ci accordiamo sul tema, e alla fine ricevi i passi concreti da fare.</p>
+    <h3>Mi garantisci un posto di lavoro o la certificazione?</h3>
+    <p>No: il percorso ti dà metodo, chiarezza e un piano. Il risultato dipende dal lavoro che fai e dal mercato.</p>
+  </div>
+
+  <p style="margin-top:2rem">
+    <a class="btn" href={contatto('Ciao Chiara, vorrei prenotare la prima consulenza gratuita di mentoring per aspiranti Scrum Master. Il mio punto di partenza è: ')}>Inizia dalla consulenza gratuita</a>
+  </p>
+</Base>

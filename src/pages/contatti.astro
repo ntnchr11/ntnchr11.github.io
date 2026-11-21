@@ -26,6 +26,8 @@ const configurato = !site.formEndpoint.includes('INCOLLA-QUI');
     </form>
     <script is:inline>
       const f = document.getElementById('contatto');
+      const pre = new URLSearchParams(location.search).get('messaggio');
+      if (pre) f.querySelector('textarea').value = pre;
       const esito = document.getElementById('esito');
       f.addEventListener('submit', async (e) => {
         e.preventDefault();

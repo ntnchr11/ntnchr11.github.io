@@ -13,6 +13,7 @@ export const nav = [
   { href: '/percorso', label: 'Percorso' },
   { href: '/competenze', label: 'Competenze' },
   { href: '/progetti', label: 'Progetti' },
+  { href: '/mentoring', label: 'Mentoring' },
   { href: '/passioni', label: 'Passioni' },
   { href: '/laboratorio', label: 'Laboratorio' },
   { href: '/contatti', label: 'Contatti' },

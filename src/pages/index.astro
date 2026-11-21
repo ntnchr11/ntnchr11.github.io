@@ -41,6 +41,15 @@ const note = (await getCollection('laboratorio')).sort((a, b) => +b.data.data - 
     ))}
   </div>
 
+  <h2>Mentoring</h2>
+  <div class="grid">
+    <a class="card" href={`${base}/mentoring`} style="text-decoration:none;color:inherit">
+      <span class="eyebrow">Per chi vuole diventare Scrum Master</span>
+      <h3>Mentoring per aspiranti Scrum Master</h3>
+      <p>Un percorso individuale per capire il ruolo, costruire le competenze e pianificare i prossimi passi. Prima consulenza gratuita.</p>
+    </a>
+  </div>
+
   <h2>Fuori dal lavoro</h2>
   <div class="grid">
     <a class="card" href={`${base}/passioni`} style="text-decoration:none;color:inherit">
