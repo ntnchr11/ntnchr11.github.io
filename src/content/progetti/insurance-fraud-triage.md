@@ -1,6 +1,6 @@
 ---
 titolo: Motor Insurance Claims Fraud Triage
-descrizione: Un modello di fraud detection sui sinistri auto, tradotto in una coda di triage per investigatori. Scritto come una pubblicazione scientifica.
+descrizione: Un modello di fraud detection sui sinistri auto, tradotto in una coda di triage per investigatori.
 stato: completato
 tecnologie: [Python, scikit-learn, Random Forest, Architettura medallion, Product thinking]
 repo: https://github.com/ntnchr11/insurance-fraud-triage
