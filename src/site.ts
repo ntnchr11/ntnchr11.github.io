@@ -2,7 +2,7 @@
 export const site = {
   nome: 'Chiara Antonucci',
   ruolo: 'Senior Scrum Master · Organizational Facilitator',
-  tagline: 'Senior Scrum Master, con una conoscenza approfondita di Lean e Agile e un approccio orientato al prodotto. Aiuto team e leadership ad allinearsi su valore e obiettivi misurabili.',
+  tagline: 'Senior Scrum Master, con una conoscenza approfondita di Lean e Agile e un approccio orientato al prodotto e ai dati. Aiuto team e leadership ad allinearsi su valore e obiettivi misurabili.',
   // Endpoint del form contatti (Formspree). Vedi README: sezione 'Form contatti'.
   formEndpoint: 'https://formspree.io/f/xeaawlno',
   github: 'https://github.com/ntnchr11',
