@@ -9,6 +9,10 @@ const prezzi = {
   primaCallMinuti: 30,
 };
 const nIncontri = 3;
+// Link di prenotazione su Cal.com. Gli altri due verranno aggiunti quando saranno pronti.
+const cal = {
+  primaConsulenza: 'https://cal.com/chiara.antonucci/prima-consulenza-gratuita',
+};
 const risparmio = prezzi.oraSingola * nIncontri - prezzi.percorso;
 const contatto = (testo: string) => `${base}/contatti?messaggio=${encodeURIComponent(testo)}`;
 
@@ -39,7 +43,7 @@ const incontri = [
   <h1>Vuoi diventare Scrum Master ma non sai da dove iniziare?</h1>
   <p class="lead">Forse lavori già nel mondo IT, come Developer, Tester, Business Analyst o Project Manager, e stai pensando a un percorso in ambito Agile. Ti aiuto a capire come arrivarci.</p>
   <p style="margin-top:1.5rem">
-    <a class="btn" href={contatto('Ciao Chiara, vorrei prenotare la prima consulenza gratuita di mentoring per aspiranti Scrum Master. Il mio punto di partenza è: ')}>Prenota la prima consulenza gratuita</a>
+    <a class="btn" href={cal.primaConsulenza} target="_blank" rel="noopener">Prenota la prima consulenza gratuita</a>
   </p>
 
   <h2>Ti riconosci in queste domande?</h2>
@@ -75,7 +79,7 @@ const incontri = [
       <span class="eyebrow">Per iniziare</span>
       <h3>Prima consulenza gratuita</h3>
       <p>{prezzi.primaCallMinuti} minuti per conoscerci, capire il tuo punto di partenza e vedere se il percorso fa per te e se ti trovi bene con il mio modo di lavorare. Senza impegno.</p>
-      <a class="btn sec" href={contatto('Ciao Chiara, vorrei prenotare la prima consulenza gratuita. ')}>Prenota</a>
+      <a class="btn sec" href={cal.primaConsulenza} target="_blank" rel="noopener">Scegli un orario</a>
     </section>
     <section class="card">
       <span class="eyebrow">Singolo incontro</span>
