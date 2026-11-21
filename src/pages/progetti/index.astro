@@ -7,7 +7,7 @@ const progetti = (await getCollection('progetti')).sort((a, b) => a.data.ordine 
 <Base titolo="Progetti">
   <p class="eyebrow">Progetti</p>
   <h1>Cosa ho costruito</h1>
-  <p class="lead">Side project, esperimenti e repository. Aggiungine uno creando un file Markdown in <code>src/content/progetti</code>.</p>
+  <p class="lead">Side project, esperimenti e repository: quello che costruisco per imparare e per mettere alla prova le mie idee.</p>
   <div class="grid" style="margin-top:2rem">
     {progetti.map((p) => (
       <a class="card" href={`${base}/progetti/${p.id}`} style="text-decoration:none;color:inherit">
